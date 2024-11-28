@@ -8,8 +8,8 @@ from get_embedding_function import get_embedding_function
 from langchain.vectorstores.chroma import Chroma
 
 
-CHROMA_PATH = "D:/Project/Oollama-langchain-rag-app/src/langchain-ollama/chroma"
-DATA_PATH = r"D:/Project/Oollama-langchain-rag-app/data/Black White Minimalist CV Resume.pdf"
+CHROMA_PATH = r"D:/Project/Oollama-langchain-rag-app/src/langchain-ollama/chroma"
+DATA_PATH = r"D:/Project/Oollama-langchain-rag-app/data/"
 
 def main():
 
@@ -29,9 +29,22 @@ def main():
 
 
 def load_documents():
+    if not os.path.exists(DATA_PATH):
+        print(f"Error: The path {DATA_PATH} does not exist.")
+        return []
+    if not os.listdir(DATA_PATH):
+        print(f"Warning: The directory {DATA_PATH} is empty.")
+    print(f"Loading documents from: {DATA_PATH}")
     document_loader = PyPDFDirectoryLoader(DATA_PATH)
-    return document_loader.load()
-
+    documents = document_loader.load()
+    # Check a sample of loaded documents
+    if documents:
+        print(f"Loaded {len(documents)} documents.")
+        print(f"Sample document: {documents[0]}")  # Print a sample document
+    else:
+        print("No documents were loaded.")
+        
+    return documents
 
 def split_documents(documents: list[Document]):
     text_splitter = RecursiveCharacterTextSplitter(

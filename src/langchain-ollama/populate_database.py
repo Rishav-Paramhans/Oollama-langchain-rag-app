@@ -11,7 +11,7 @@ from langchain.vectorstores.chroma import Chroma
 CHROMA_PATH = r"D:/Project/Oollama-langchain-rag-app/src/langchain-ollama/chroma"
 DATA_PATH = r"D:/Project/Oollama-langchain-rag-app/data/"
 
-def main():
+def process_pdf():
 
     # Check if the database should be cleared (using the --clear flag).
     parser = argparse.ArgumentParser()

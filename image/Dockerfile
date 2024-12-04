@@ -1,7 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.11
 
 # Copy requirements.txt
-COPY ./requirements.txt ${LAMBDA_TASK_ROOT}
+COPY ./requirements.txt
 
 # Required to make SQLite3 work for Chroma
 RUN pip install pysqlite3-binary

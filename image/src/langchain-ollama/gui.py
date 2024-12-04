@@ -9,9 +9,9 @@ def gradio_interface(file, query_text, query_rag = query_rag):
     DATA_FOLDER_PATH = r"D:/Project/Oollama-langchain-rag-app/data"
     if file:
         file_path = handle_file(file)
-    # Step 2: Call the function to process the PDF and populate the database
-    populate_message = process_pdf()
-    print(populate_message)
+        # Step 2: Call the function to process the PDF and populate the database
+        populate_message = process_pdf()
+        print(populate_message)
 
     # Step 3: Query the database after processing
     return query_rag(query_text)

@@ -8,8 +8,9 @@ from get_embedding_function import get_embedding_function
 from langchain.vectorstores.chroma import Chroma
 
 
-CHROMA_PATH = r"D:/Project/Oollama-langchain-rag-app/src/langchain-ollama/chroma"
-DATA_PATH = r"D:/Project/Oollama-langchain-rag-app/data/"
+CHROMA_PATH = os.path.join(os.getcwd(), "chroma")
+
+DATA_PATH = os.path.join(os.path.dirname(os.getcwd()), "data")
 
 def process_pdf():
 

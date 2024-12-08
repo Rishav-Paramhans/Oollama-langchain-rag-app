@@ -4,6 +4,17 @@ import gradio as gr
 from query_data import *
 from populate_database import *
 
+# Get the current script's directory
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+# Get the parent directory of the script's directory
+src_dir = os.path.dirname(script_dir)
+
+image_dir = os.path.dirname(src_dir)
+
+CHROMA_PATH = os.path.join(image_dir, "chroma")
+
+DATA_PATH = os.path.join(src_dir, "data")
 # Gradio interface function
 def gradio_interface(file, query_text, progress=gr.Progress(track_tqdm=True)):
     response = ""
@@ -30,7 +41,7 @@ def gradio_interface(file, query_text, progress=gr.Progress(track_tqdm=True)):
 # Define the function to handle file upload and copy
 def handle_file(file):
     # Define the target directory relative to the current working directory
-    target_directory = os.path.join(os.path.dirname(os.getcwd()), "data")
+    target_directory = DATA_PATH
     print("Target directory:", target_directory)
 
     # Ensure the target directory exists

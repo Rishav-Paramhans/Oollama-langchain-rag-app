@@ -7,8 +7,15 @@ import gradio as gr
 import os 
 import subprocess  # To run external scripts
 import shutil
-CHROMA_PATH = "chroma"
+# Get the current script's directory
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
+# Get the parent directory of the script's directory
+src_dir = os.path.dirname(script_dir)
+
+image_dir = os.path.dirname(src_dir)
+
+CHROMA_PATH = os.path.join(image_dir, "chroma")
 PROMPT_TEMPLATE = """
 Answer the question based only on the following context:
 
@@ -42,7 +49,7 @@ def query_rag(query_text: str):
     prompt = prompt_template.format(context=context_text, question=query_text)
     # print(prompt)
 
-    model = Ollama(model="mistral")
+    model = Ollama(model="llama3.1")
     response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("id", None) for doc, _score in results]

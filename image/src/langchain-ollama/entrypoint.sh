@@ -8,8 +8,8 @@ sleep 5
 
 # Pull the required models
 /usr/local/bin/ollama pull nomic-embed-text
-/usr/local/bin/ollama pull mistral
-/usr/local/bin/ollama run mistral
+/usr/local/bin/ollama pull llama3.1
+/usr/local/bin/ollama run llama3.1
 
 # Run the main Gradio interface
 exec "$@"

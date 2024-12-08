@@ -1,3 +1,6 @@
 venv/
 data/
 credentials/
+image/chroma/
+image/src/lanchain-ollama/chroma
+image/src/lanchain-ollama/data

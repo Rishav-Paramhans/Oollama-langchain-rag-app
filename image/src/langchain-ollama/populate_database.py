@@ -8,9 +8,17 @@ from get_embedding_function import get_embedding_function
 from langchain.vectorstores.chroma import Chroma
 
 
-CHROMA_PATH = os.path.join(os.getcwd(), "chroma")
+# Get the current script's directory
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
-DATA_PATH = os.path.join(os.path.dirname(os.getcwd()), "data")
+# Get the parent directory of the script's directory
+src_dir = os.path.dirname(script_dir)
+
+image_dir = os.path.dirname(src_dir)
+
+CHROMA_PATH = os.path.join(image_dir, "chroma")
+
+DATA_PATH = os.path.join(src_dir, "data")
 
 def process_pdf():
 
@@ -121,4 +129,4 @@ def clear_database():
 
 
 if __name__ == "__main__":
-    main()
+    process_pdf()
